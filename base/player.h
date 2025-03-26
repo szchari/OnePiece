@@ -4,6 +4,7 @@
 #include <stdint.h> // uint8_t
 #include "getch.h"
 #include "map.h"
+#include "coord.h"
 
 
 typedef struct player_s Player;

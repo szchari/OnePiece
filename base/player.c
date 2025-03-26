@@ -4,6 +4,7 @@
 #include "getch.h"
 #include "map.h"
 #include "player.h"
+#include "coord.h"
 
 struct player_s {
     int posx;
@@ -69,11 +70,11 @@ extern bool movement(Player* this, char **map, char direction){
     return 1
 }
 
-extern char* get_pos(Player* this){
-    static char pos[2];  // Utilisation d'un tableau statique
-    pos[0] = this->posx;
-    pos[1] = this->posy
-    return pos;
+extern Coord get_pos(Player* this){
+    Coord coord;
+    coord->x = this->posx;
+    coord->y = this->posy;
+    return coord;
 }
 
 

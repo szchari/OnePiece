@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include "grille.h"
 #include "player.h"
-#include "map"
+#include "map.h"
+
 
 #define COLONNE 5
 #define LIGNE 4
