@@ -7,9 +7,12 @@
 #include "coord.h"
 
 struct player_s {
+    int healthbar;
     int posx;
     int posy;   
 };
+
+static int total_hp = 20; // vie total d'un joueur
 
 extern Player* player_new(){
     Player* this = (Player*)calloc(1,sizeof(Player));
@@ -20,6 +23,7 @@ extern Player* player_new(){
 extern void player_init(Player* this){
     this->posx= 0;
     this->posy = 0;
+    this->healthbar = 100;
     set_case(this->posx,this->posy,'j');
 }  
 
@@ -75,6 +79,19 @@ extern Coord player_get_pos(Player* this){
     return coord;
 }
 
+extern void player_print_healthbar(Player* this){
+    printf("|");
+    int hp_affiche = (this->healthbar * total_hp) / 100;
+    for (int i = 0; i < hp_affiche; i++) {
+        printf("=");
+    }
+    for (int i = hp_affiche; i < total_hp ; i++) {
+        printf(" ");
+    }
+    printf("|");
+    printf(" %d%%\n", this->healthbar);  // Afficher le pourcentage de vie
+    
+}
 extern void player_free(Player* this){
     free(this);
 }

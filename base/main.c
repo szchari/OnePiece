@@ -4,25 +4,31 @@
 #include "coord.h"
 #include "treasure.h"
 #include <time.h>
+#include "jeu.h"
+
 int main()
 {
-    srand(time(NULL)); // Initialisation du générateur aléatoire
+    
     char car ;
     int fin = 0;
-    map_init();
+
+    //initialisation 
+    initialisation();
     Player* player = player_new();
     player_init(player);
-    treasure_init();
     Coord coord = treasure_get_pos();
+
     while(!fin)
     {
         map_print();
         printf("x = %d, y = %d\n",coord.x,coord.y);
+        player_print_healthbar(player);
         //traitement du déplacement
         car = getch();
         mouvement(player,car);
         system("clear");
-        if (verifVictoire(player)){
+        //verifier la victoire
+        if (verifVictoire(player,treasure_get_pos())){
             fin =1;
         }
         //verif quitter jeu

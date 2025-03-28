@@ -7,5 +7,5 @@
 
 extern void treasure_init();
 extern Coord treasure_get_pos(void);
-extern int verifVictoire(Player* player);
+
 #endif

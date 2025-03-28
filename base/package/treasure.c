@@ -24,11 +24,3 @@ extern Coord treasure_get_pos(void) {
     return treasure;
 }
 
-extern int verifVictoire(Player* player){
-    Coord coordj = player_get_pos(player);
-    if (treasure.x == coordj.x && treasure.y == coordj.y){
-        return 1;
-    }
-    return 0;
-}
-
