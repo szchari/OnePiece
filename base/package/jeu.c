@@ -36,7 +36,10 @@ extern int verifVictoire(Player* player, Coord treasure){
 }
 
 extern void hitTrap(Player* player){
-    if(verifPieges(piegeList,player_get_pos(player))){
+    Coord coord =player_get_pos(player);
+
+    if(verifPieges(piegeList,coord)){
+        set_case(coord.x,coord.y,'X');
         player_modifhp(player,-20);
     }
 }

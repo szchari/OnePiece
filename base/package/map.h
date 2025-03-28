@@ -7,6 +7,6 @@ void map_free();
 
 int get_colonne();
 int get_ligne();
-int get_case();
+extern char get_case(int posx, int posy);
 void set_case(int posx, int posy, char lettre);
 void map_free();

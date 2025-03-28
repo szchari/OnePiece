@@ -2,6 +2,8 @@
     "files.associations": {
         "stdio.h": "c",
         "stdlib.h": "c",
-        "piege.h": "c"
+        "piege.h": "c",
+        "grille.h": "c",
+        "map.h": "c"
     }
 }

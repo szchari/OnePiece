@@ -44,8 +44,8 @@ extern int get_ligne() {
     return LIGNE;
 }
 
-extern int get_case() {
-    return caractere;
+extern char get_case(int posx, int posy) {
+    return game_map[posx][posy];
 }
 
 extern void set_case(int posx, int posy, char lettre) {
