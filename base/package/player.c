@@ -61,6 +61,7 @@ extern int mouvement(Player* this, char direction){
                 }
                 this->posy++; 
                 break;
+                
         }
     
         set_case(this->posx,this->posy,'j');
