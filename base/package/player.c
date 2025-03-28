@@ -79,6 +79,18 @@ extern Coord player_get_pos(Player* this){
     return coord;
 }
 
+extern int player_get_hp(Player* this){
+    return this->healthbar;
+}
+
+extern void player_modifhp(Player* this,int hp){
+
+    if (this->healthbar+hp>100){
+        return;
+    }
+    this->healthbar+=hp;
+}
+
 extern void player_print_healthbar(Player* this){
     printf("|");
     int hp_affiche = (this->healthbar * total_hp) / 100;

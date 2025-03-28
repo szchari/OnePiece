@@ -6,8 +6,9 @@
 #include "map.h"
 
 
-extern void initialisation();
-extern int verifVictoire(Player* player, Coord treasure);
 
+extern void initialisation(int nb_trap);
+extern int verifVictoire(Player* player, Coord treasure);
+extern void hitTrap(Player* player);
 
 #endif

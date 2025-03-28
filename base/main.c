@@ -13,7 +13,7 @@ int main()
     int fin = 0;
 
     //initialisation 
-    initialisation();
+    initialisation(5);
     Player* player = player_new();
     player_init(player);
     Coord coord = treasure_get_pos();
@@ -27,17 +27,19 @@ int main()
         car = getch();
         mouvement(player,car);
         system("clear");
+        hitTrap(player);
         //verifier la victoire
-        if (verifVictoire(player,treasure_get_pos())){
-            fin =1;
-        }
+        fin =verifVictoire(player,treasure_get_pos());
         //verif quitter jeu
         if (car == 'q'){
             break;
         }
     }
-    if (fin){
+    if (fin==1){
         printf("bravo\n");
+    }
+    else{
+        printf("vous êtes mort espèce de nul\n");
     }
     //Liberation de la memoire pour le/les joueurs:
     player_free(player);

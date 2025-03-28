@@ -2,14 +2,20 @@
 #include "player.h"
 #include "treasure.h"
 #include "map.h"
+#include "piege.h"
 #include <time.h>
 #include <stdlib.h>
-
+#include "piege.h"
+#include "piegelist.h"
 static int initialized = 0; 
+static Piegelist* piegeList;
 
-extern void initialisation(){
+
+extern void initialisation(int nb_trap){
     if (!initialized){
         srand(time(NULL)); // Initialisation du générateur aléatoire
+        piegeList = piege_list_new(nb_trap);
+        piege_list_init(piegeList);
         treasure_init();
         map_init();
         initialized = 1;
@@ -19,7 +25,20 @@ extern void initialisation(){
 extern int verifVictoire(Player* player, Coord treasure){
     Coord coordj = player_get_pos(player);
     if (treasure.x == coordj.x && treasure.y == coordj.y){
+        //libère la mémoire de piegeList
+        piege_list_free(piegeList);
         return 1;
+    }
+    if (player_get_hp(player)==0){
+        return-1;
     }
     return 0;
 }
+
+extern void hitTrap(Player* player){
+    if(verifPieges(piegeList,player_get_pos(player))){
+        player_modifhp(player,-20);
+    }
+}
+
+
