@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include "grille.h"
 #include "map.h"
+#include "grille.h"
 
 #define COLONNE 10
 #define LIGNE 10
@@ -10,7 +10,7 @@
 static char **game_map = NULL; 
 static char caractere; 
 
-void map_init() {
+extern void map_init() {
     // allocation
     game_map = (char **)malloc(LIGNE * sizeof(char *));
     for (int i = 0; i < LIGNE; i++) {
@@ -25,29 +25,29 @@ void map_init() {
     }
 }
 
-void map_print() {  // print la carte
+extern void map_print() {  // print la carte
     grille_print(game_map, COLONNE, LIGNE);
 }
 
-void map_free() {  // libère la mémoire
+extern void map_free() {  // libère la mémoire
     for (int i = 0; i < LIGNE; i++) {
         free(game_map[i]);
     }
     free(game_map);
 }
 
-int get_colonne() {
+extern int get_colonne() {
     return COLONNE;
 }
 
-int get_ligne() {
+extern int get_ligne() {
     return LIGNE;
 }
 
-int get_case() {
+extern int get_case() {
     return caractere;
 }
 
-void set_case(char lettre) {
-    caractere = lettre;
+extern void set_case(int posx, int posy, char lettre) {
+    game_map[posx][posy] = lettre;
 }

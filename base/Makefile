@@ -1,18 +1,27 @@
+.PHONY: all clean re
+
+EXEC = game
+RM = rm -f
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c map.c getch.c grille.c
-OBJS = $(SRCS:.c=.o)
+CCFLAGS = -Wall -MMD -MP -Ipackage
+LDFLAGS = -lm
 
-TARGET = game
+SRC = $(wildcard *.c */*.c)
+OBJ = $(SRC:.c=.o)
+DEP = $(SRC:.c=.d)
 
-all: $(TARGET)
+-include $(DEP)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+all: $(EXEC)
 
-%.o: %.c %.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(EXEC): $(OBJ)
+	$(CC) $^ -o $@ $(LDFLAGS)
+
+%.o: %.c
+	$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	$(RM) $(OBJ) $(DEP) $(EXEC)
+
+re: clean all

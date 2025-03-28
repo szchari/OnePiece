@@ -1,39 +1,37 @@
 #include <stdlib.h>
-#include "grille.h"
 #include "player.h"
 #include "map.h"
-
-
-#define COLONNE 5
-#define LIGNE 4
-
+#include "coord.h"
+#include "treasure.h"
+#include <time.h>
 int main()
 {
+    srand(time(NULL)); // Initialisation du générateur aléatoire
     char car ;
     int fin = 0;
-    char **map;
-    
+    map_init();
     Player* player = player_new();
-    init(player,map)
-
-
-
+    player_init(player);
+    treasure_init();
 
     while(!fin)
     {
-        car = getch();
+        
         //traitement du déplacement
-        mouvement(player,map,car)
+        mouvement(player,car);
         system("clear");
-        grille_print(map, get_colonne(map), get_ligne(map));
-
+        map_print();
+        car = getch();
+        if (car == 'q'){
+            Coord coord = treasure_get_pos();
+            printf("x = %d, y = %d\n",coord.x,coord.y);
+            break;
+        }
     }
 
-  
+    //Liberation de la memoire pour le/les joueurs:
+    player_free(player);
     //Liberation de la memoire pour le tableau
-    for (int i = 0; i < LIGNE; i++) {
-        free(test_grille[i]);
-    }
-    free(test_grille);
+    map_free();
 
 }
