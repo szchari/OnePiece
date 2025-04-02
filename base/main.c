@@ -87,7 +87,7 @@ int main() {
                     printf("gg wp\n");
                     state = FIN;
                 } else if (fin == -1) {
-                    printf("Tu es mort! Game Over!\n");
+                    printf("Finito\n");
                     state = FIN;
                 } else {
                     state = ACQUISITION_CLAVIER;
@@ -96,9 +96,9 @@ int main() {
 
             case FIN:
                 if (fin == 1) {
-                    printf("Félicitations! Vous avez trouvé le trésor!\n");
+                    printf("Félicitations! Vous avez trouvé le trésor\n");
                 } else if (fin == -1) {
-                    printf("J'ai jamais vu quelqu'un d'aussi nul c'est chaud là\n");
+                    printf("Dommage\n");
                 } else {
                     printf("Jeu terminé\n");
                 }
