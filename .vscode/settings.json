@@ -6,5 +6,6 @@
         "grille.h": "c",
         "map.h": "c",
         "jeu.h": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

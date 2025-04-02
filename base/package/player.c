@@ -10,7 +10,10 @@ static int total_hp = 20; // vie total d'un joueur
 
 extern Player* player_new(){
     Player* this = (Player*)calloc(1,sizeof(Player));
-    // il faut tester s'il y a une erreur ici même si c'est pas censé
+    if (this == NULL) {
+        fprintf(stderr, "Erreur d'allocation memoire pour le player\n");
+        exit(EXIT_FAILURE);
+    }    
     return this;
 }
     
