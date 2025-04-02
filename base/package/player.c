@@ -29,9 +29,8 @@ extern void player_init(Player* this){
 
 extern int mouvement(Player* this, char direction){
     //tester si le mouvement est valide
-    if (get_case(this->posx,this->posy)!='X'){
         set_case(this->posx,this->posy,' ');
-    }
+
     switch(direction)
         {
             case 'i':

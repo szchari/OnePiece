@@ -80,6 +80,7 @@ extern int verifPieges(Piegelist* this, Coord coordplayer){
             int trap_x =    piege_get_pos(this->elements[i]).x;
             int trap_y = piege_get_pos(this->elements[i]).y;
             if (trap_x==player_x && trap_y==player_y){
+                piege_set_pos(this->elements[i],-1,-1);
                 return 1;
             }
         }
