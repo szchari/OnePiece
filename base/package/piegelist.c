@@ -10,8 +10,8 @@
 typedef struct piegelist_s{
     Piege** elements;  // Dynamic array of Piege pointers
     int size;          // Current number of elements
-    int capacity;      // Total allocated capacity
-};
+    int capacity;     // Total allocated capacity
+} Piegelist;
 
 extern Piegelist* piege_list_new(int capacity) {
     Piegelist* list = (Piegelist*)malloc(sizeof(Piegelist));

@@ -1,4 +1,4 @@
-#ifndef PLAYR_H
+#ifndef PLAYER_H
 #define PLAYER_H
 
 #include <stdint.h> // uint8_t
@@ -7,7 +7,12 @@
 #include "coord.h"
 
 
-typedef struct player_s Player;
+typedef struct player_s {
+    int healthbar;
+    int posx;
+    int posy;
+} Player;
+
 extern Player* player_new();
 extern int mouvement(Player* this, char direction);  
 extern void player_init(Player* this);

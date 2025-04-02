@@ -6,12 +6,6 @@
 #include "player.h"
 #include "coord.h"
 
-struct player_s {
-    int healthbar;
-    int posx;
-    int posy;   
-};
-
 static int total_hp = 20; // vie total d'un joueur
 
 extern Player* player_new(){
