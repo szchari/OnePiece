@@ -16,7 +16,7 @@ typedef struct piegelist_s{
 extern Piegelist* piege_list_new(int capacity) {
     Piegelist* list = (Piegelist*)malloc(sizeof(Piegelist));
     if (list == NULL) {
-        fprintf(stderr, "Echec malloc pour PiegeList\n");
+        fprintf(stderr, "Echec de malloc pour PiegeList\n");
         return NULL;
     }
     
@@ -25,7 +25,7 @@ extern Piegelist* piege_list_new(int capacity) {
     list->elements = (Piege**)malloc(list->capacity * sizeof(Piege*));
     
     if (list->elements == NULL) {
-        fprintf(stderr, "Echec malloc pour PiegeList elements\n");
+        fprintf(stderr, "Echec de malloc pour PiegeList elements\n");
         free(list);
         return NULL;
     }
@@ -35,7 +35,7 @@ extern Piegelist* piege_list_new(int capacity) {
 
 extern void piege_list_init(Piegelist* this) {
     for (int i = 0; i < this->capacity; i++) {
-        //nouveau piege
+        // nouveau piege
         this->elements[i] = piege_new();
         if (this->elements[i] == NULL) {
             fprintf(stderr, "Echec de création du piège\n");

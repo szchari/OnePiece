@@ -39,6 +39,7 @@ int main() {
                 break;
 
             case ACQUISITION_CLAVIER:
+                system("clear");
                 map_print();
                 printf("x = %d, y = %d\n", coord.x, coord.y);
                 player_print_healthbar(player);

@@ -15,7 +15,7 @@ typedef struct pirate_s {
 extern Pirate* pirate_new();
 
 extern void pirate_init(Pirate* this);
-extern int pirate_move(Pirate* this, Plater* player);
+extern int pirate_move(Pirate* this, Player* player);
 extern Coord pirate_get_pos(Pirate* this);
 extern void pirate_random_pos(Pirate* this);
 extern void pirate_free(Pirate* this);
