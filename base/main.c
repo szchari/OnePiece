@@ -155,7 +155,7 @@ int main() {
     state_t current_state = S_INIT;
     event_t current_event = E_START;
     Player* player = player_new();
-    player_state direction = NUL;
+    player_state direction;
     int fin = 0;
     char car;
     
@@ -170,7 +170,7 @@ int main() {
         // Exécution de l'action 
         execute_action(transition.action, player, &direction, &fin);
         
-        if (current_event == S_FORGET){
+        if (current_state == S_FORGET){
             current_event = E_CONTINUER;  // Force la sortie de cet état
             continue;  // Passe directement à l'itération suivante de la boucle
         }

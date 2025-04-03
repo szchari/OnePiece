@@ -11,7 +11,6 @@ typedef enum {
     BAS,
     DROITE,
     GAUCHE,
-    NUL,
 } player_state;
 
 typedef struct player_s {
