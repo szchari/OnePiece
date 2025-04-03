@@ -1,0 +1,134 @@
+@startuml classDiagram
+skinparam Style SequenceMessageAlignment
+class Coord {
+    +int x
+    +int y
+}
+
+class Player {
+    -int posx
+    -int posy
+    -int healthbar
+    +player_new() Player*
+    +player_init(Player*)
+    +mouvement(Player*, player_state) int
+    +player_get_pos(Player*) Coord
+    +player_get_hp(Player*) int
+    +player_modifhp(Player*, int)
+    +player_print_healthbar(Player*)
+    +player_free(Player*)
+}
+
+class Treasure {
+    -Coord treasure
+    -int initialized
+    +treasure_init()
+    +treasure_get_pos() Coord
+}
+
+class Pirate {
+    -int posx
+    -int posy
+    +pirate_new() Pirate*
+    +pirate_init(Pirate*)
+    +pirate_move(Pirate*, Player*) int
+    +pirate_get_pos(Pirate*) Coord
+    +pirate_random_pos(Pirate*)
+    +pirate_free(Pirate*)
+}
+
+metaclass Map <module> {
+    -char** game_map
+    +map_init()
+    +map_print()
+    +map_free()
+    +get_colonne() int
+    +get_ligne() int
+    +get_case(int, int) char
+    +set_case(int, int, char)
+}
+
+class Piege {
+    -Coord piege_coord
+    +piege_new() Piege*
+    +piege_get_pos(Piege*) Coord
+    +piege_set_pos(Piege*, int, int)
+    +piege_free(Piege*)
+}
+
+class Piegelist {
+    -Piege** elements
+    -int size
+    -int capacity
+    +piege_list_new(int) Piegelist*
+    +piege_list_init(Piegelist*)
+    +verifPieges(Piegelist*, Coord) int
+    +piege_list_free(Piegelist*)
+}
+
+class Pirate {
+    -int posx
+    -int posy
+    +pirate_new() Pirate*
+    +pirate_init(Pirate*)
+    +pirate_move(Pirate*, Player*) int
+    +pirate_get_pos(Pirate*) Coord
+    +pirate_random_pos(Pirate*)
+    +pirate_free(Pirate*)
+}
+
+metaclass Jeu <module> {
+    -Piegelist* piegeList
+    -Pirate* pirate
+    -int initialized
+    +initialisation(int)
+    +verifVictoire(Player*, Coord) int
+    +hitTrap(Player*)
+    +movePirate(Player*)
+}
+
+metaclass main <module> {
+    +main() int
+}
+
+enum player_state {
+    <<enumeration>>
+    NUL
+    HAUT
+    BAS
+    GAUCHE
+    DROITE
+}
+
+metaclass getch <module> {
+    +getch() char
+}
+
+metaclass grille <module> {
+    +grille_print(char**, uint8_t, uint8_t)
+}
+
+Jeu *-- Piegelist
+Jeu *-- Pirate
+Jeu *-- Player
+Jeu *-- Treasure
+
+Player --> Coord
+Player --> player_state
+
+Piege --> Coord
+Pirate --> Coord
+Pirate --> Player
+
+Piegelist *-- Piege
+
+Map --> grille
+
+main --> Player
+main --> Map
+main --> Jeu
+main --> Treasure
+main --> getch
+main --> player_state
+
+@enduml
