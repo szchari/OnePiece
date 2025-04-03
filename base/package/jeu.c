@@ -36,7 +36,7 @@ extern int verifVictoire(Player* player, Coord treasure){
         pirate_free(pirate);
         return 1;
     }
-    if (player_get_hp(player)==0){
+    if (player_get_hp(player)<=0){
         return-1;
     }
     return 0;
