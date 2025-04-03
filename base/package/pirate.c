@@ -9,7 +9,7 @@
 extern Pirate* pirate_new() {
     Pirate* this = (Pirate*)calloc(1, sizeof(Pirate));
     if (this == NULL) {
-        fprintf(stderr, "Erreur d'allocation memoire pour le pirate\n");
+        fprintf(stderr, "Erreur d'allocation memoire pour le pirate_new\n");
         exit(EXIT_FAILURE);
     }
     return this;

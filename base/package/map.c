@@ -13,8 +13,16 @@ static char **game_map = NULL;
 extern void map_init() {
     // allocation
     game_map = (char **)malloc(LIGNE * sizeof(char *));
+    if (game_map == NULL) {
+        fprintf(stderr, "Echec de malloc pour game_map\n");
+        return;
+    }
     for (int i = 0; i < LIGNE; i++) {
         game_map[i] = (char *)malloc(COLONNE * sizeof(char));
+        if (game_map[i] == NULL) {
+            fprintf(stderr, "Echec de malloc pour game_map[i]\n");
+            return;
+        }
     }
 
     // initialisation

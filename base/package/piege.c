@@ -13,9 +13,12 @@ struct piege_s {
 
 extern Piege* piege_new(){
     Piege* this = (Piege*)calloc(1,sizeof(Piege));
+    if (this == NULL) {
+        fprintf(stderr, "Echec de calloc pour piege_new\n");
+        return NULL;
+    }
     this->piege_coord.x =0;
     this->piege_coord.y =0;
-    // il faut tester s'il y a une erreur ici même si c'est pas censé   
     return this;
 }
 
