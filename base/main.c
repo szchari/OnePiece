@@ -7,6 +7,7 @@
 #include "piegelist.h"
 #include "getch.h"
 #include "jeu.h"
+#include <assert.h>
 
 //Définition des états possibles du jeu 
 typedef enum {
@@ -90,7 +91,9 @@ void afficher(Player* player);
 
 //Fonction d'exécution d'une action en fonction de l'état et de l'événement 
 static void execute_action(action_t action, Player* player, player_state* direction, int* fin) {
-    
+    assert(player != NULL);
+    assert(direction != NULL);
+    assert(fin != NULL);
     switch (action) {
         case A_NOP:
             //Aucune action 

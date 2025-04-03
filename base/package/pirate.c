@@ -4,6 +4,7 @@
 #include "map.h"
 #include "coord.h"
 #include <time.h>
+#include <assert.h>
 
 
 extern Pirate* pirate_new() {
@@ -16,6 +17,7 @@ extern Pirate* pirate_new() {
 }
 
 extern void pirate_init(Pirate* this) {
+    assert(this != NULL);
     do {
         this->posx = rand() % get_ligne();
         this->posy = rand() % get_colonne();
@@ -25,6 +27,8 @@ extern void pirate_init(Pirate* this) {
 }
 
 extern int pirate_move(Pirate* this, Player* player) {
+    assert(this != NULL);
+    assert(player != NULL);
     set_case(this->posx, this->posy, ' ');
     
     Coord player_pos = player_get_pos(player);
@@ -85,6 +89,7 @@ extern int pirate_move(Pirate* this, Player* player) {
 }
 
 extern Coord pirate_get_pos(Pirate* this) {
+    assert(this != NULL);
     Coord coord;
     coord.x = this->posx;
     coord.y = this->posy;
@@ -92,6 +97,7 @@ extern Coord pirate_get_pos(Pirate* this) {
 }
 
 extern void pirate_random_pos(Pirate* this) {
+    assert(this != NULL);
     set_case(this->posx, this->posy, ' ');
     
     this->posx = rand() % get_ligne();
@@ -101,5 +107,6 @@ extern void pirate_random_pos(Pirate* this) {
 }
 
 extern void pirate_free(Pirate* this) {
+    assert(this != NULL);
     free(this);
 }

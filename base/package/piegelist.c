@@ -34,6 +34,7 @@ extern Piegelist* piege_list_new(int capacity) {
 }
 
 extern void piege_list_init(Piegelist* this) {
+    assert(this != NULL);
     for (int i = 0; i < this->capacity; i++) {
         // nouveau piege
         this->elements[i] = piege_new();
@@ -72,6 +73,7 @@ extern void piege_list_init(Piegelist* this) {
 
 
 extern int verifPieges(Piegelist* this, Coord coordplayer){
+    assert(this != NULL);
     int player_x = coordplayer.x;
     int player_y = coordplayer.y;
     
@@ -91,6 +93,7 @@ extern int verifPieges(Piegelist* this, Coord coordplayer){
 
 
 void piege_list_free(Piegelist* this) {
+    assert(this != NULL);
     // Free each Piege
     for (int i = 0; i < this->size; i++) {
         free(this->elements[i]);

@@ -24,13 +24,16 @@ extern Piege* piege_new(){
 
 
 extern Coord piege_get_pos(Piege* this){
+    assert(this != NULL);
     return this->piege_coord;
 }
 extern void piege_set_pos(Piege* this,int posx, int posy){
+    assert(this != NULL);
     this->piege_coord.x = posx;
     this->piege_coord.y = posy;
 }
 
 extern void piege_free(Piege* this){
+    assert(this != NULL);
     free(this);
 }

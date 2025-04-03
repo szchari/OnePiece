@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include "piege.h"
 #include "piegelist.h"
+#include <assert.h>
 
 static int initialized = 0; 
 static Piegelist* piegeList;
@@ -29,6 +30,7 @@ extern void initialisation(int nb_trap){
 }
 
 extern int verifVictoire(Player* player, Coord treasure){
+    assert(player != NULL);
     Coord coordj = player_get_pos(player);
     if (treasure.x == coordj.x && treasure.y == coordj.y){
         //libère la mémoire de piegeList
@@ -43,6 +45,7 @@ extern int verifVictoire(Player* player, Coord treasure){
 }
 
 extern void hitTrap(Player* player){
+    assert(player != NULL);
     Coord coord =player_get_pos(player);
 
     if(verifPieges(piegeList,coord)){
@@ -52,5 +55,6 @@ extern void hitTrap(Player* player){
 }
 
 extern void movePirate(Player* player){
+    assert(player != NULL);
     pirate_move(pirate, player);
 }

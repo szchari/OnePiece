@@ -18,6 +18,7 @@ extern Player* player_new(){
 }
     
 extern void player_init(Player* this){
+    assert(this != NULL);
     this->posx= 0;
     this->posy = 0;
     this->healthbar = 100;
@@ -25,6 +26,7 @@ extern void player_init(Player* this){
 }  
 
 extern int mouvement(Player* this, player_state state){
+    assert(this != NULL);
     //tester si le mouvement est valide
         set_case(this->posx,this->posy,' ');
 
@@ -70,6 +72,7 @@ extern int mouvement(Player* this, player_state state){
 }
 
 extern Coord player_get_pos(Player* this){
+    assert(this != NULL);
     Coord coord;
     coord.x = this->posx;
     coord.y = this->posy;
@@ -77,10 +80,12 @@ extern Coord player_get_pos(Player* this){
 }
 
 extern int player_get_hp(Player* this){
+    assert(this != NULL);
     return this->healthbar;
 }
 
 extern void player_modifhp(Player* this,int hp){
+    assert(this != NULL);
 
     if (this->healthbar+hp>100){
         return;
@@ -89,6 +94,7 @@ extern void player_modifhp(Player* this,int hp){
 }
 
 extern void player_print_healthbar(Player* this){
+    assert(this != NULL);
     printf("|");
     int hp_affiche = (this->healthbar * total_hp) / 100;
     for (int i = 0; i < hp_affiche; i++) {
@@ -102,6 +108,7 @@ extern void player_print_healthbar(Player* this){
     
 }
 extern void player_free(Player* this){
+    assert(this != NULL);
     free(this);
 }
 
