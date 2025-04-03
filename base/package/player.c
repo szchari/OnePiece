@@ -24,13 +24,13 @@ extern void player_init(Player* this){
     set_case(this->posx,this->posy,'j');
 }  
 
-extern int mouvement(Player* this, char direction){
+extern int mouvement(Player* this, player_state state){
     //tester si le mouvement est valide
         set_case(this->posx,this->posy,' ');
 
-    switch(direction)
+    switch(state)
         {
-            case 'i':
+            case HAUT:
                 //verif dépassement
                 if (this->posx-1<0){
                     set_case(this->posx,this->posy,'j');
@@ -38,7 +38,7 @@ extern int mouvement(Player* this, char direction){
                 }
                 this->posx--; 
                 break;
-            case 'k':
+            case BAS:
                 //verif dépassement
                 if (this->posx==get_colonne()-1){
                     set_case(this->posx,this->posy,'j');
@@ -46,7 +46,7 @@ extern int mouvement(Player* this, char direction){
                 }
                 this->posx++; 
                 break;
-            case 'j':
+            case DROITE:
                 //verif dépassement
                 if (this->posy-1<0){
                     set_case(this->posx,this->posy,'j');
@@ -54,7 +54,7 @@ extern int mouvement(Player* this, char direction){
                 }
                 this->posy--; 
                 break;
-            case 'l':
+            case GAUCHE:
                 //verif dépassement
                 if (this->posy==get_ligne()-1){    
                     set_case(this->posx,this->posy,'j');
@@ -62,7 +62,7 @@ extern int mouvement(Player* this, char direction){
                 }
                 this->posy++; 
                 break;
-                
+               
         }
     
         set_case(this->posx,this->posy,'j');

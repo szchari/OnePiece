@@ -23,6 +23,7 @@ typedef enum {
 int main() {
     char car;
     State state = INIT;
+    player_state state_player = NUL;
     int fin = 0;
 
     Player* player = NULL;
@@ -45,32 +46,32 @@ int main() {
                 car = getch();
                 
                 switch (car) {
-                    case 'i': state = DEPLACEMENT_HAUT; break;
-                    case 'k': state = DEPLACEMENT_BAS; break;
-                    case 'j': state = DEPLACEMENT_GAUCHE; break;
-                    case 'l': state = DEPLACEMENT_DROITE; break;
+                    case 'i': state = DEPLACEMENT_HAUT; state_player = HAUT; break;
+                    case 'k': state = DEPLACEMENT_BAS; state_player = BAS; break;
+                    case 'j': state = DEPLACEMENT_GAUCHE; state_player = DROITE; break;
+                    case 'l': state = DEPLACEMENT_DROITE; state_player = GAUCHE; break;
                     case 'q': state = FIN; break;
                     default: state = ACQUISITION_CLAVIER; break;
                 }
                 break;
 
             case DEPLACEMENT_GAUCHE:
-                mouvement(player, 'j');
+                mouvement(player, state_player);
                 state = MOUVEMENT_PIRATE;
                 break;
 
             case DEPLACEMENT_DROITE:
-                mouvement(player, 'l');
+                mouvement(player, state_player);
                 state = MOUVEMENT_PIRATE;
                 break;
 
             case DEPLACEMENT_HAUT:
-                mouvement(player, 'i');
+                mouvement(player, state_player);
                 state = MOUVEMENT_PIRATE;
                 break;
 
             case DEPLACEMENT_BAS:
-                mouvement(player, 'k');
+                mouvement(player, state_player);
                 state = MOUVEMENT_PIRATE;
                 break;
                 
@@ -90,6 +91,7 @@ int main() {
                     printf("Finito\n");
                     state = FIN;
                 } else {
+                    state_player = NUL;
                     state = ACQUISITION_CLAVIER;
                 }
                 break;

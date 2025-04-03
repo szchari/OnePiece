@@ -74,6 +74,7 @@ extern int pirate_move(Pirate* this, Player* player) {
         
         // déplacé à un endroit random
         pirate_random_pos(this);
+        set_case(player_pos.x, player_pos.y, 'j');
         
         return 1; // le pirate a choppé le joueur
     } else {

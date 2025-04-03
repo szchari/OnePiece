@@ -8,7 +8,7 @@
 #define LIGNE 10
 
 static char **game_map = NULL; 
-static char caractere; 
+
 
 extern void map_init() {
     // allocation

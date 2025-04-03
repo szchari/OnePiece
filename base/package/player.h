@@ -6,6 +6,13 @@
 #include "map.h"
 #include "coord.h"
 
+typedef enum {
+    HAUT,
+    BAS,
+    DROITE,
+    GAUCHE,
+    NUL,
+} player_state;
 
 typedef struct player_s {
     int healthbar;
@@ -14,7 +21,7 @@ typedef struct player_s {
 } Player;
 
 extern Player* player_new();
-extern int mouvement(Player* this, char direction);  
+extern int mouvement(Player* this, player_state state);  
 extern void player_init(Player* this);
 extern Coord player_get_pos(Player* this);
 extern int player_get_hp(Player* this);
